@@ -13,7 +13,7 @@ const Box: FC<BoxProps> = ({
     return (
         <div
         className={twMerge(`
-        bg-neutral-900 rounded-lg h-fit w-full
+        bg-neutral-200 rounded-lg h-fit w-full
         `,
     className)}
         >

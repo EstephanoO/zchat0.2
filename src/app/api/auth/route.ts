@@ -5,7 +5,6 @@ import db from '@/lib/db';
 export async function POST(request: Request) {
   try {
     const record = await request.json();
-    console.log(record);
     cookies().set('pb_auth', JSON.stringify(record));
     return NextResponse.json(record);
   } catch (err: any) {
