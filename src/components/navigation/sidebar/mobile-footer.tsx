@@ -1,17 +1,11 @@
 'use client'
 
-import useConversation from "@/hooks/use-conversation"
 import useRoutes from "@/hooks/useRoutes"
 import { MobileItem } from "./mobile-item"
 
 
 function MobileFooter() {
     const routes = useRoutes()
-    const  { isOpen} = useConversation()
-
-    if( isOpen) {
-        return null
-    }
 
   return (
     <div className="

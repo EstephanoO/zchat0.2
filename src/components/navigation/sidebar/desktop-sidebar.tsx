@@ -4,19 +4,25 @@ import useRoutes from "@/hooks/useRoutes"
 import { useState } from "react"
 import { DesktopItem } from "./desktop-item"
 import { UserButton } from "@/components/user-button"
+import { UserAvatar } from "@/components/user-avatar"
+import { User, UserWithPocketApi } from "@/modules/users/auth/user.types"
 
-const DesktopSidebar = () => {
+interface DesktopSidebarProps {
+    user: UserWithPocketApi
+}
+
+const DesktopSidebar = ({user}: DesktopSidebarProps) => {
     const routes = useRoutes()
     const [isOpen, setIsOpen] = useState(false)
 
     return  (
-        <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-40 lg:w-20 xl:px-6 lg:overflow-y-auto lg:bg-white lg:border-r-[1px] lg:pb-4 lg:flex lg:flex-col justify-between">
+        <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-40 lg:w-20 xl:px-6 lg:overflow-y-auto lg:bg-lime-200/50 lg:border-r-[1px] lg:pb-4 lg:flex lg:flex-col justify-between">
             <nav className="mt-4 flex flex-col justify-between">
                 <ul
                 role='list'
-                className="flex flex-col items-center space-y-1"
+                className="flex flex-col items-center space-y-1 "
                 >
-                    <UserButton/>
+                    <UserAvatar src={user.avatarUrl} className="mb-4"/>
                     {routes.map((route) => (
                         <DesktopItem
                         key={route.label}

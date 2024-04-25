@@ -1,11 +1,16 @@
 import PocketBase, { RecordService } from "pocketbase";
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { UserWithPocketApi } from "@/modules/users/auth/user.types";
+import { Meet, Organization } from "@/modules/org/org.type";
+import { Member } from "@/modules/member/member.type";
 
 
 interface TypedPocketBase extends PocketBase {
     collection(idOrName: string): RecordService
     collection(idOrName: 'users'): RecordService<UserWithPocketApi>
+    collection(idOrName: 'meet'): RecordService<Meet>
+    collection(idOrName: 'member'): RecordService<Member>
+    collection(idOrName: 'Organization'): RecordService<Organization>
 }
 
 export class DatabaseClient {

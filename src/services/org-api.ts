@@ -1,15 +1,16 @@
 'use server'
 
 import db from "@/lib/db";
-import { Organization } from "@/models/org.type";
+import { Organization } from "@/modules/org/org.type";
 import { revalidatePath } from "next/cache";
 
 export const getOrgs =  async(userId: string): Promise<Organization[]> => {
     try {
         
         const data = await db.client.collection('Organization').getList(1, 50,{
+            expand: 'user,members,channels,meet'
         })
-        return data.items
+        return data.items as Organization[]
         } catch (error) {
             console.error(error)
             throw new Error('Failed to get organizations')
@@ -17,7 +18,9 @@ export const getOrgs =  async(userId: string): Promise<Organization[]> => {
     }
     export const getOrg = async (serverId:string):Promise<Organization> => {
         try {
-            const data = await db.client.collection('Organization').getOne(serverId)
+            const data = await db.client.collection('Organization').getOne(serverId, {
+                expand: 'user,members,channels,meet'
+            })
             return data as Organization
             
         } catch (error) {

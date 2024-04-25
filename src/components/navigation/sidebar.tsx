@@ -1,14 +1,16 @@
+import { currentProfile } from "@/lib/current-profile"
 import DesktopSidebar from "./sidebar/desktop-sidebar"
 import MobileFooter from "./sidebar/mobile-footer"
 
 interface SidebarProps {
 }
 
-function Sidebar({
+async function Sidebar({
 }: SidebarProps) {
+    const user = await currentProfile()
     return (
         <div className="h-full">
-            <DesktopSidebar />
+            <DesktopSidebar user={user} />
             <MobileFooter />
         </div>
     )
