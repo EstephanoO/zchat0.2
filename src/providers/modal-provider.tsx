@@ -2,7 +2,6 @@
 
 import { CreateMeetModal } from "@/components/modals/create-meet";
 import { CreateOrgModal } from "@/components/modals/create-org-modal";
-import { InviteModal } from "@/components/modals/invite-modal";
 import { useState } from "react";
 
 export const ModalProvider = () => {
@@ -15,7 +14,6 @@ export const ModalProvider = () => {
   return (
     <>
     <CreateOrgModal/>
-    <InviteModal />
     <CreateMeetModal />
     </>
   )
